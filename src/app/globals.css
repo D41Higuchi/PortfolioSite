@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ここにカスタムグローバルスタイルを追加できます */
+body {
+  /* 例: スムーズスクロール */
+  scroll-behavior: smooth;
+  /* 基本的な背景色とテキスト色を設定 (デフォルトテーマ) */
+  @apply bg-default-secondary text-default-text;
+  /* 基本フォントを設定 (tailwind.config.ts の sans を参照) */
+  font-family: theme('fontFamily.sans');
+}
+
+/* 基本的なリンクスタイル */
+a {
+  @apply text-default-accent transition-colors duration-300;
+}
+
+a:hover {
+  @apply text-blue-700; /* ホバー時の色を少し濃くする例 */
+}
+
+
+@layer utilities {
+  @keyframes blob {
+    0% {
+      transform: translate(0px, 0px) scale(1);
+    }
+    33% {
+      transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+    100% {
+      transform: translate(0px, 0px) scale(1);
+    }
+  }
+
+  /* 薄いドット背景パターン (修正) */
+  .bg-dot-pattern {
+    /* theme() を使わず直接色を指定 */
+    background-image: radial-gradient(rgba(209, 213, 219, 0.3) 1px, transparent 1px); /* gray-300/30 */
+    background-size: 10px 10px;
+  }
+   /* 薄いグリッド背景パターン (修正) */
+  .bg-grid-pattern {
+     /* theme() を使わず直接色を指定 */
+     background-image: linear-gradient(rgba(229, 231, 235, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(229, 231, 235, 0.5) 1px, transparent 1px); /* gray-200/50 */
+     background-size: 20px 20px;
+  }
+}
