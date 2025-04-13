@@ -2,6 +2,7 @@
   "name": "portfolio-site",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://your-username.github.io/my-react-repo",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
