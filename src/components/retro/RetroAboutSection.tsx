@@ -5,7 +5,8 @@ import { motion } from 'framer-motion';
 import { siteContent } from '@/data/content'; // コンテンツデータをインポート
 
 const RetroAboutSection = () => {
-  const { title, icons, text1, text2, text3 } = siteContent.about; // データから取得
+  // text2 を削除し、text4, text5 を追加
+  const { title, icons, text1, text3, text4, text5 } = siteContent.about; // データから取得
   const RetroIcon = icons.retro; // レトロテーマ用アイコン
 
   return (
@@ -40,12 +41,12 @@ const RetroAboutSection = () => {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="space-y-6 text-lg leading-relaxed text-retro-text" // テキスト色、サイズ、行間調整
         >
-          {/* 大文字化削除 */}
+          {/* text1, text3, text4, text5 を表示 */}
           <p>{text1}</p>
-          <p>{text2}</p>
           <p>{text3}</p>
+          <p>{text4}</p>
+          <p>{text5}</p>
         </motion.div>
-        {/* 区切り線削除 */}
       </div>
     </section>
   );

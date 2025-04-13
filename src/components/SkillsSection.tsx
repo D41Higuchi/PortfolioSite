@@ -64,6 +64,7 @@ const SkillsSection = () => {
                     key={skill.name}
                     label={skill.name}
                     level={skill.level}
+                    icon={skill.icon} // アイコンを渡す
                     // color="bg-indigo-500" // デフォルト色を使用 or カスタム色
                   />
                 ))}

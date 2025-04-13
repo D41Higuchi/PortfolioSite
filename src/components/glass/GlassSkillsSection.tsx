@@ -60,6 +60,7 @@ const GlassSkillsSection = () => {
                     <ProgressBar
                       label={skill.name}
                       level={skill.level}
+                      icon={skill.icon} // アイコンを渡す
                       color="bg-purple-400"
                     />
                   </div>

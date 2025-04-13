@@ -5,9 +5,9 @@ import { motion } from 'framer-motion';
 import { siteContent } from '@/data/content';
 
 const FactoryAboutSection = () => {
-  const { title, icons, text1, text2, text3 } = siteContent.about;
-  // Factoryテーマ用のアイコンは未定義なので、モダン用を仮に使用 or 非表示
-  // const FactoryIcon = icons.modern;
+  // text2 を削除し、text4, text5 を追加
+  const { title, text1, text3, text4, text5 } = siteContent.about;
+  // Factoryテーマ用のアイコンは使用しない
 
   // テキストブロックのアニメーション
   const textBlockVariants = {
@@ -40,9 +40,11 @@ const FactoryAboutSection = () => {
           </h2>
           {/* テキスト (サンセリフ体) - text-gray-700 を text-factory-muted に変更 */}
           <div className="space-y-4 text-base md:text-lg text-factory-muted font-sans leading-relaxed">
+            {/* text1, text3, text4, text5 を表示 */}
             <p>{text1}</p>
-            <p>{text2}</p>
             <p>{text3}</p>
+            <p>{text4}</p>
+            <p>{text5}</p>
           </div>
         </motion.div>
 

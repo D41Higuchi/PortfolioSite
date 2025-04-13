@@ -54,25 +54,16 @@ const FactorySkillsSection = () => {
               </h3>
               <div className="space-y-4">
                 {category.items.map((skill) => (
-                  // ProgressBar を使用し、スタイルを Factory 風に調整
-                  <div key={skill.name} className="font-sans">
-                     <div className="flex justify-between items-center mb-1 text-sm">
-                       {/* text-gray-400 を text-factory-muted に変更 */}
-                       <span className="text-factory-muted">{skill.name}</span>
-                       {/* text-gray-500 を text-factory-muted に変更 */}
-                       <span className="text-factory-muted">{skill.level}%</span>
-                     </div>
-                     {/* ProgressBar のスタイルを上書き */}
-                     <div className="w-full bg-gray-700 h-1 overflow-hidden"> {/* バーの高さを細く */}
-                       {/* bg-yellow-400 を bg-factory-accent に変更 */}
-                       <motion.div
-                         className="bg-factory-accent h-full" // アクセントカラー
-                         initial={{ width: '0%' }}
-                         whileInView={{ width: `${skill.level}%` }}
-                         viewport={{ once: true, amount: 0.8 }}
-                         transition={{ duration: 1, delay: 0.3 + index * 0.1, ease: [0.2, 0.65, 0.3, 0.9] }} // 遅延とイージング調整
-                       />
-                     </div>
+                  // 共通の ProgressBar コンポーネントを使用
+                  <div key={skill.name} className="font-sans [&>div>div>span]:text-factory-muted [&>div>div>span+span]:text-factory-muted [&>div>div>div>svg]:text-factory-muted"> {/* ラベル、パーセント、アイコンの色を調整 */}
+                    <ProgressBar
+                      label={skill.name}
+                      level={skill.level}
+                      icon={skill.icon} // アイコンを渡す
+                      color="bg-factory-accent" // Factoryテーマのアクセントカラーを指定
+                      // ProgressBar内の背景色も調整が必要な場合がある
+                      // 例: className="[&>div+div]:bg-gray-700" のように親要素から指定
+                    />
                   </div>
                 ))}
               </div>

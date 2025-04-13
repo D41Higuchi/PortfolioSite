@@ -117,14 +117,23 @@ const GlassProjectsSection = () => {
       </section>
 
       {/* モーダル (グラステーマ用にスタイル調整が必要かも) */}
-      <Modal isOpen={isModalOpen} onClose={closeModal} title={selectedProject?.title}>
+      {/* モーダルタイトルからプロジェクトタイトルを削除 (モーダル内で表示するため) */}
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
         {selectedProject && (
-          // モーダル内容のスタイルは共通UIのものを流用 (必要なら調整)
-          <div className="space-y-4 font-sans"> {/* グラステーマ内だがモーダルは読みやすいフォントに */}
+          // モーダル内容のスタイルは共通UIのものを流用
+          <div className="space-y-4 font-sans">
+            {/* モーダル内にタイトルとアイコンを表示 */}
+            <h3 className="text-xl font-semibold text-gray-800 flex items-center gap-2">
+              {selectedProject.icon && <selectedProject.icon className="text-xl text-indigo-600" />} {/* アイコン表示 */}
+              {selectedProject.title}
+            </h3>
             <img src={selectedProject.imageUrl} alt={selectedProject.title} className="w-full h-auto rounded-lg mb-4 max-h-60 object-cover" />
             <p className="text-gray-700">{selectedProject.description}</p>
-            <p className="text-sm text-gray-500">使用技術: React, Node.js, ... (仮)</p>
-            <p className="text-sm text-gray-500">担当箇所: フロントエンド、バックエンド (仮)</p>
+            {/* techStackString を表示 */}
+            <p className="text-sm text-gray-500">
+              <span className="font-semibold">使用技術:</span> {selectedProject.techStackString}
+            </p>
+            {/* 担当箇所のプレースホルダーは削除 */}
           </div>
         )}
       </Modal>

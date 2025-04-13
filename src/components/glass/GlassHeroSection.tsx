@@ -7,6 +7,7 @@ import { FaArrowRight } from 'react-icons/fa';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Sphere, MeshDistortMaterial } from '@react-three/drei';
 import type { Mesh } from 'three'; // Mesh 型をインポート
+import { siteContent } from '@/data/content'; // siteContent をインポート
 
 // 回転する3D球体コンポーネント
 const AnimatedSphere = () => {
@@ -30,7 +31,8 @@ const AnimatedSphere = () => {
 };
 
 const GlassHeroSection = () => {
-  const name = "Your Name";
+  // siteContent から name と jobTitle を取得
+  const { name, jobTitle } = siteContent;
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-900 via-purple-900 to-indigo-900 text-white">
@@ -56,8 +58,9 @@ const GlassHeroSection = () => {
         <h1 className="text-5xl md:text-6xl font-bold mb-4 tracking-tight">
           {name}
         </h1>
+        {/* jobTitle を表示 */}
         <p className="text-xl md:text-2xl text-gray-300 mb-8">
-          Freelance Engineer
+          {jobTitle}
         </p>
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}

@@ -122,13 +122,19 @@ const RetroProjectsSection = () => {
       <Modal isOpen={isModalOpen} onClose={closeModal}>
         {selectedProject && (
           <div className="p-6 bg-retro-primary border-4 border-retro-text text-retro-text max-w-2xl mx-auto shadow-[8px_8px_0px_#3A3A3A]">
-            <h3 className="text-2xl mb-4 uppercase text-retro-accent">{selectedProject.title}</h3>
+            {/* タイトルとアイコンを表示 */}
+            <h3 className="text-2xl mb-4 uppercase text-retro-accent flex items-center gap-3">
+              {selectedProject.icon && <selectedProject.icon className="text-3xl" />} {/* アイコン表示 */}
+              {selectedProject.title}
+            </h3>
             <div className="relative w-full h-64 mb-4 border-4 border-retro-text bg-retro-secondary"> {/* 背景色追加 */}
               <Image src={selectedProject.imageUrl || '/placeholder.png'} alt={selectedProject.title} layout="fill" objectFit="contain" />
             </div>
             <p className="mb-4 text-sm leading-relaxed">{selectedProject.description}</p> {/* 行間調整 */}
-            {/* technologies, githubUrl, liveUrl を参照しないように修正 */}
-            {/* <p className="text-xs mb-4"><strong className="text-retro-accent uppercase">Tech:</strong> {selectedProject.technologies.join(', ')}</p> */}
+            {/* techStackString を表示 */}
+            <p className="text-xs mb-4">
+              <strong className="text-retro-accent uppercase">Tech:</strong> {selectedProject.techStackString}
+            </p>
             <div className="flex justify-end items-center space-x-3 mt-6 pt-4 border-t-2 border-retro-text">
               {/* GitHub/Liveリンク削除 */}
               <button

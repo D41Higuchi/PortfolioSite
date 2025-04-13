@@ -23,15 +23,18 @@ const AnimatedTorusKnot = () => {
 
 
 const GlassAboutSection = () => {
-  const { title, icons, text1, text2, text3 } = siteContent.about;
+  // text2 を削除し、text4, text5 を追加
+  const { title, icons, text1, text3, text4, text5 } = siteContent.about;
   const GlassIcon = icons.glass;
 
   return (
-    // 背景色を bg-glass-primary に変更、テキスト色を text-gray-200 に変更 (コントラスト改善)
+    // 元のレイアウトに戻す: flex items-center justify-center を追加
     <section id="about" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-glass-primary py-20 md:py-32 px-4 text-gray-200">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+      {/* 3D背景の div を削除 */}
 
-        {/* 左側: テキストコンテンツ (グラスパネル) - 内側のスタイルは維持しつつ、テキスト色を調整 */}
+      {/* 元の2カラムグリッドレイアウトに戻す */}
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+        {/* 左側: テキストコンテンツ (グラスパネル) */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -46,13 +49,15 @@ const GlassAboutSection = () => {
           </h2>
           {/* 本文のテキスト色を text-glass-panel-muted に変更 */}
           <div className="space-y-4 text-lg text-glass-panel-muted leading-relaxed">
+            {/* text1, text3, text4, text5 を表示 */}
             <p>{text1}</p>
-            <p>{text2}</p>
             <p>{text3}</p>
+            <p>{text4}</p>
+            <p>{text5}</p>
           </div>
         </motion.div>
 
-        {/* 右側: 3D要素 */}
+        {/* 右側: 3D要素を再追加 */}
         <motion.div
            initial={{ opacity: 0, scale: 0.8 }}
            whileInView={{ opacity: 1, scale: 1 }}
@@ -70,7 +75,6 @@ const GlassAboutSection = () => {
              </Suspense>
            </Canvas>
         </motion.div>
-
       </div>
     </section>
   );

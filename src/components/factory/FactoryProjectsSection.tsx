@@ -117,14 +117,22 @@ const FactoryProjectsSection = () => {
         </div> {/* </> を </div> に修正 */}
       </section>
 
-      {/* モーダル */}
-      <Modal isOpen={isModalOpen} onClose={closeModal} title={selectedProject?.title}>
+      {/* モーダル (タイトルprop削除) */}
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
         {selectedProject && (
           <div className="space-y-4 font-sans">
-            <img src={selectedProject.imageUrl} alt={selectedProject.title} className="w-full h-auto rounded-lg mb-4 max-h-60 object-cover" />
+            {/* モーダル内にタイトルとアイコンを表示 */}
+            <h3 className="text-xl font-semibold text-gray-800 flex items-center gap-2">
+              {selectedProject.icon && <selectedProject.icon className="text-xl text-yellow-500" />} {/* アイコン表示 (Factory風の色) */}
+              {selectedProject.title}
+            </h3>
+            <img src={selectedProject.imageUrl} alt={selectedProject.title} className="w-full h-auto rounded-lg mb-4 max-h-60 object-cover border-2 border-black" /> {/* ボーダー追加 */}
             <p className="text-gray-700">{selectedProject.description}</p>
-            <p className="text-sm text-gray-500">使用技術: React, Node.js, ... (仮)</p>
-            <p className="text-sm text-gray-500">担当箇所: フロントエンド、バックエンド (仮)</p>
+            {/* techStackString を表示 */}
+            <p className="text-sm text-gray-500">
+              <span className="font-semibold">使用技術:</span> {selectedProject.techStackString}
+            </p>
+            {/* 担当箇所のプレースホルダーは削除 */}
           </div>
         )}
       </Modal>

@@ -28,7 +28,8 @@ const letterVariants = {
 };
 
 const AboutSection = () => {
-  const { title, icons, text1, text2, text3 } = siteContent.about;
+  // text2 を削除し、text4, text5, imagePlaceholder を追加
+  const { title, icons, text1, text3, text4, text5, imagePlaceholder } = siteContent.about;
   const ModernIcon = icons.modern;
 
   return (
@@ -41,13 +42,18 @@ const AboutSection = () => {
           whileInView={{ opacity: 1, scale: 1, x: 0 }} // x: 0 を追加
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex justify-center"
+          className="flex justify-center items-center" // items-center を追加
         >
-          {/* TODO: プレースホルダー画像を content.ts から読み込む */}
-          <svg className="w-64 h-64 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          {/* content.ts から画像パスを読み込む */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={imagePlaceholder.modern}
+            alt="About Me Illustration"
+            className="w-64 h-64 md:w-80 md:h-80 object-contain" // サイズ調整、object-contain を追加
+          />
         </motion.div>
 
-        {/* 右側: テキストコンテンツ - slideInUp を追加 */}
+        {/* 右側: テキストコンテンツ */}
         <motion.div
           initial={{ opacity: 0, y: 30 }} // initial を直接指定
           whileInView={{ opacity: 1, y: 0 }} // whileInView を直接指定
@@ -74,21 +80,34 @@ const AboutSection = () => {
               </motion.span>
             ))}
           </motion.p>
+          {/* text2 を text3 に変更 */}
           <motion.p
             variants={sentenceVariants}
             className="text-lg text-gray-600 mb-4"
           >
-            {text2.split("").map((char, index) => (
+            {text3.split("").map((char, index) => (
               <motion.span key={char + "-" + index} variants={letterVariants}>
                 {char}
               </motion.span>
             ))}
           </motion.p>
+          {/* text4 を追加 */}
            <motion.p
             variants={sentenceVariants}
-            className="text-lg text-gray-600" // mb-4 を削除
+            className="text-lg text-gray-600 mb-4"
           >
-            {text3.split("").map((char, index) => (
+            {text4.split("").map((char, index) => (
+              <motion.span key={char + "-" + index} variants={letterVariants}>
+                {char}
+              </motion.span>
+            ))}
+          </motion.p>
+          {/* text5 を追加 */}
+           <motion.p
+            variants={sentenceVariants}
+            className="text-lg text-gray-600" // 最後の p タグは mb-4 なし
+          >
+            {text5.split("").map((char, index) => (
               <motion.span key={char + "-" + index} variants={letterVariants}>
                 {char}
               </motion.span>

@@ -53,16 +53,20 @@ const RetroSkillsSection = () => {
                 {category.items.map((skill) => (
                   <li key={skill.name} className="flex items-center justify-between text-lg"> {/* text-lg に変更 */}
                     <span>{skill.name}</span>
-                    {/* レベル表示 (ドット形式) */}
+                    {/* レベル表示 (ドット形式 - 0-100を5段階に変換) */}
                     <span className="flex gap-1">
-                      {[...Array(5)].map((_, i) => (
-                        <span
-                          key={i}
-                          className={`w-3 h-3 border-2 border-retro-text ${
-                            i < skill.level ? 'bg-retro-accent' : 'bg-retro-primary' // レベルに応じて色分け
-                          }`}
-                        ></span>
-                      ))}
+                      {[...Array(5)].map((_, i) => {
+                        // レベルを5段階評価に変換 (0-100 -> 0-5)
+                        const filledDots = Math.round(skill.level / 20);
+                        return (
+                          <span
+                            key={i}
+                            className={`w-3 h-3 border-2 border-retro-text ${
+                              i < filledDots ? 'bg-retro-accent' : 'bg-retro-primary' // 変換後のレベルで色分け
+                            }`}
+                          ></span>
+                        );
+                      })}
                     </span>
                   </li>
                 ))}

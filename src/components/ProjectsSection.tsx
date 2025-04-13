@@ -157,9 +157,11 @@ const ProjectsSection = () => {
           <div className="space-y-4">
             <img src={selectedProject.imageUrl} alt={selectedProject.title} className="w-full h-auto rounded-lg mb-4 max-h-60 object-cover" />
             <p className="text-gray-700">{selectedProject.description}</p>
-            {/* TODO: ここに詳細情報（使用技術、担当箇所など）を追加 */}
-            <p className="text-sm text-gray-500">使用技術: React, Node.js, ... (仮)</p>
-            <p className="text-sm text-gray-500">担当箇所: フロントエンド、バックエンド (仮)</p>
+            {/* techStackString を表示 */}
+            <p className="text-sm text-gray-500">
+              <span className="font-semibold">使用技術:</span> {selectedProject.techStackString}
+            </p>
+            {/* 担当箇所のプレースホルダーは削除 */}
             {/* TODO: 関連リンクなどを追加 */}
             {/* <a href="#" className="text-indigo-600 hover:underline">プロジェクトを見る</a> */}
           </div>
