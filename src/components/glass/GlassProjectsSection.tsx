@@ -107,7 +107,8 @@ const GlassProjectsSection = () => {
             >
               <button
                 onClick={handleLoadMore}
-                className="px-8 py-3 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-lg font-semibold hover:bg-white/20 transition-colors duration-300 shadow-lg"
+                // 背景の透明度を上げ、テキスト色を明確にする (例: text-gray-200)
+                className="px-8 py-3 bg-white/20 backdrop-blur-md border border-white/30 text-gray-200 rounded-lg font-semibold hover:bg-white/30 transition-colors duration-300 shadow-lg"
               >
                 さらに表示
               </button>

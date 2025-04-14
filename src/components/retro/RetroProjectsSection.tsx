@@ -4,7 +4,7 @@ import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image'; // Image コンポーネントをインポート
 import Link from 'next/link'; // Link コンポーネントをインポート
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'; // アイコンをインポート
+import { FaExternalLinkAlt } from 'react-icons/fa'; // アイコンをインポート (FaGithubを削除)
 import { siteContent } from '@/data/content';
 import Modal from '@/components/ui/Modal';
 

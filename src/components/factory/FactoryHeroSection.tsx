@@ -51,9 +51,18 @@ const FactoryHeroSection = () => {
   const { x, y } = useFollowPointer();
   const typedJobTitle = useTypewriter(jobTitle, 80); // タイプライター速度調整
 
+  // windowのサイズをstateで管理
+  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
+
+  useEffect(() => {
+    // クライアントサイドでのみ実行
+    setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+  }, []); // マウント時に一度だけ実行
+
   // カーソル位置に基づいて要素を動かす
-  const rotateX = useTransform(y, [0, window.innerHeight], [10, -10]);
-  const rotateY = useTransform(x, [0, window.innerWidth], [-10, 10]);
+  // stateのサイズ情報を使用し、初期値0の場合のフォールバックを追加
+  const rotateX = useTransform(y, [0, windowSize.height || 1], [10, -10]);
+  const rotateY = useTransform(x, [0, windowSize.width || 1], [-10, 10]);
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center bg-white text-black relative overflow-hidden px-4">

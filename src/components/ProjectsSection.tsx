@@ -26,11 +26,14 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
   };
 
   return (
+    // div を motion.div に戻し、variants を再適用
     <motion.div
       ref={cardRef}
       // style={{ y }} // stagger で制御するため削除
       variants={cardItemVariants} // variants を適用
-      // initial, whileInView, viewport, transition を削除 (親の staggerChildren で制御)
+      initial="hidden" // initial を追加
+      whileInView="visible" // whileInView を追加
+      viewport={{ once: true, amount: 0.2 }} // viewport を追加 (amount は調整可)
       // 背景色を default-primary に、基本の影を shadow-card に、ホバーエフェクトを追加
       className="bg-default-primary rounded-xl overflow-hidden shadow-card cursor-pointer flex flex-col transition-all duration-300 ease-out-expo hover:shadow-hover hover:-translate-y-2 hover:rotate-1"
       onClick={onClick} // クリックイベントを追加
@@ -46,7 +49,7 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
         <h3 className="text-xl font-semibold mb-2 text-gray-900">{project.title}</h3>
         <p className="text-gray-600 text-sm leading-relaxed">{project.description}</p>
       </div>
-    </motion.div>
+    </motion.div> // div を motion.div に戻す
   );
 };
 
@@ -93,7 +96,8 @@ const ProjectsSection = () => {
   return (
     <> {/* フラグメントで囲む */}
       {/* 背景色を bg-default-primary に変更 */}
-      <section ref={sectionRef} id="projects" className="min-h-screen flex items-center justify-center bg-default-primary py-20 md:py-32 px-4">
+      {/* section から flex items-center justify-center を削除 */}
+      <section ref={sectionRef} id="projects" className="min-h-screen bg-default-primary py-20 md:py-32 px-4">
         <div className="max-w-6xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: -30 }}
@@ -105,25 +109,13 @@ const ProjectsSection = () => {
             <ModernIcon className="text-indigo-600" />
             {title}
           </motion.h2>
-          {/* グリッドを motion.div に変更し、staggerChildren を適用 */}
+          {/* グリッドコンテナからアニメーション関連 props を削除 */}
           <motion.div
-            variants={{
-              hidden: { opacity: 1 }, // 親自体は隠さない
-              visible: {
-                opacity: 1,
-                transition: {
-                  staggerChildren: 0.15, // カード間の表示遅延
-                  delayChildren: 0.2 // タイトル表示後の遅延
-                }
-              }
-            }}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }} // 少し早めにトリガー
+            // variants, initial, whileInView, viewport を削除
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-12"
           >
             {displayedProjects.map((project) => (
-              // ProjectCard は motion コンポーネントのまま variants を受け取る
+              // ProjectCard にアニメーションを適用
               <ProjectCard
                 key={project.id}
                 project={project}

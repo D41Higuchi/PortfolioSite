@@ -1,9 +1,9 @@
 import { IconType } from 'react-icons';
 import {
-  FaReact, FaNodeJs, FaPython, FaAws, FaUserAstronaut, FaLaptopCode, FaEnvelopeOpenText, FaCogs, FaProjectDiagram, FaPaperPlane, FaVuejs, FaDocker, FaServer, FaGlobe, FaMobileAlt, FaDatabase, FaNetworkWired, FaTools, FaJsSquare, FaHtml5, FaCss3Alt, FaSass, FaGitAlt, FaGithub, FaGitlab, FaJenkins, FaLinux, FaGoogle, FaApple, FaUsers, FaLightbulb, FaCloud // FaCloud を追加
+  FaReact, FaNodeJs, FaPython, FaAws, FaUser, FaUserTie, FaIdBadge, FaLaptopCode, FaEnvelopeOpenText, FaCogs, FaProjectDiagram, FaPaperPlane, FaVuejs, FaDocker, FaServer, FaGlobe, FaMobileAlt, FaDatabase, FaNetworkWired, FaTools, FaJsSquare, FaHtml5, FaCss3Alt, FaSass, FaGitAlt, FaGithub, FaGitlab, FaJenkins, FaLinux, FaGoogle, FaApple, FaUsers, FaLightbulb, FaCloud, FaBriefcase, FaShapes // 追加: FaUser, FaUserTie, FaIdBadge, FaBriefcase, FaShapes
 } from 'react-icons/fa';
 import {
-  SiNextdotjs, SiTypescript, SiTailwindcss, SiFramer, SiPostgresql, SiGraphql, SiKubernetes, SiFlutter, SiDart, /* SiNuxtdotjs, */ SiRedux, SiJest, SiTestinglibrary, SiGo, SiExpress, SiNestjs, SiFlask, SiDjango, SiFastapi, SiMysql, SiMongodb, SiRedis, SiPrisma, SiApollographql, SiAmazonec2, SiAmazons3, SiAwslambda, SiAmazonrds, SiGooglecloud, /* SiMicrosoftazure, */ SiTerraform, SiPrometheus, SiGrafana, SiElasticsearch, SiNginx // SiMicrosoftazure を削除 (コメントアウト)
+  SiNextdotjs, SiTypescript, SiTailwindcss, SiFramer, SiPostgresql, SiGraphql, SiKubernetes, SiFlutter, SiDart, /* SiNuxtdotjs, */ SiRedux, SiJest, SiTestinglibrary, SiGo, SiExpress, SiNestjs, SiFlask, SiDjango, SiFastapi, SiMysql, SiMongodb, SiRedis, SiPrisma, SiApollographql, SiAmazonec2, SiAmazons3, SiAwslambda, SiAmazonrds, SiGooglecloud, /* SiMicrosoftazure, */ SiTerraform, SiPrometheus, SiGrafana, SiElasticsearch, SiNginx, SiServerless // 追加: SiServerless
 } from 'react-icons/si';
 // プロジェクト用アイコン例
 import { GiConversation, GiArtificialIntelligence } from "react-icons/gi";
@@ -18,7 +18,8 @@ export const siteContent = {
 
   about: {
     title: "About Me",
-    icons: { modern: FaUserAstronaut, retro: FaUserAstronaut, glass: FaUserAstronaut }, // アイコンは仮です
+    // Aboutアイコンをテーマごとに変更
+    icons: { modern: FaUser, retro: FaUserTie, glass: FaIdBadge },
     // --- 自己紹介文 ---
     text1: "フリーランス・フルスタックエンジニアのSoraです。単に機能するだけでなく、使う人の心に響き、日常を少し豊かにするような「ユニークで魅力的なデジタル体験」を創造することに情熱を注いでいます。",
     text3: "フロントエンドからバックエンド、インフラまで一貫して対応可能なフルスタックの視点を活かし、技術的な制約にとらわれず、ビジネス目的の達成と優れたユーザー体験の最適なバランスを見つけるソリューションを提案・実装します。",
@@ -26,7 +27,7 @@ export const siteContent = {
     text4: "特にReactやFlutterを用いたフロントエンド開発、インタラクティブなUIアニメーションの実装を得意としています。常に新しい技術トレンドを追いかけ、最近は生成AIやAIエージェントの業務活用、WebAssemblyといった分野に注目し、積極的に開発を進めています。",
     // --- クライアントとの関わり ---
     text5: "プロジェクトを成功に導くためには、技術力だけでなく、円滑なコミュニケーションが不可欠だと考えています。報・連・相を徹底し、認識の齟齬がないよう丁寧なヒアリングを心がけます。お任せいただいた仕事は、責任を持って最後までやり遂げ、期待を超える価値を提供できるよう努めます。",
-    imagePlaceholder: { modern: "/placeholder-modern.svg", retro: "/placeholder-retro.png", glass: "/placeholder-glass.svg" } // 画像は後で差し替えてください
+    imagePlaceholder: { modern: "/img/IMG_8500.JPG", retro: "/placeholder-retro.png", glass: "/placeholder-glass.svg" } // 画像は後で差し替えてください
   },
 
   skills: {
@@ -88,7 +89,8 @@ export const siteContent = {
           { name: 'ELK Stack', level: 70, icon: SiElasticsearch }, // Logging
           { name: 'Nginx', level: 85, icon: SiNginx }, // Web Server
           { name: 'Linux', level: 85, icon: FaLinux }, // OS
-          { name: 'Serverless Framework', level: 75, icon: FaAws }, // Serverless (仮アイコン)
+          // Serverless Framework のアイコンを変更
+          { name: 'Serverless Framework', level: 75, icon: SiServerless },
         ]
       },
       // --- モバイルアプリ開発経験があれば ---
@@ -118,7 +120,8 @@ export const siteContent = {
 
   projects: {
     title: "実績紹介",
-    icons: { modern: FaLaptopCode, retro: FaLaptopCode, glass: FaLaptopCode }, // 仮
+    // Projectsアイコンをテーマごとに変更
+    icons: { modern: FaProjectDiagram, retro: FaBriefcase, glass: FaShapes },
     // --- 実績リスト ---
     // 各プロジェクトの情報を整理しました。説明文や技術スタックは仮のものが含まれます。
     // ご自身の経験に合わせて修正してください。画像パスも後で設定が必要です。
@@ -128,7 +131,7 @@ export const siteContent = {
         title: '業務用 生成AIチャットアプリケーション',
         description: 'Azure OpenAI Service等を活用し、セキュアな環境で利用可能な業務特化型チャットインターフェース。仕様策定から設計、開発、インフラ構築、リリースまで一貫して担当しました。',
         techStackString: 'Vue.js, Flask (Python), Azure (OpenAI Service, Functions, etc.), JavaScript',
-        imageUrl: 'project1.jpg', // 要画像パス設定
+        imageUrl: '/img/project1.jpg', // 要画像パス設定
         icon: BsChatDots // プロジェクト内容を表すアイコン例
       },
       {
@@ -136,7 +139,7 @@ export const siteContent = {
         title: '化粧品ブランド LPサイト制作',
         description: 'ブランドの世界観を表現する、アニメーション豊かで魅力的なランディングページ。React (Next.js) を採用し、高いパフォーマンスと更新性を実現。ヘッドレスCMSとの連携も行いました。',
         techStackString: 'React, Next.js, TypeScript, Tailwind CSS, Framer Motion, Contentful, Vercel', // 仮スタック
-        imageUrl: 'project2.jpg', // 要画像パス設定
+        imageUrl: '/img/project2.jpg', // 要画像パス設定
         icon: BsPalette // プロジェクト内容を表すアイコン例
       },
       {
@@ -144,7 +147,7 @@ export const siteContent = {
         title: '飲食店向け 業務効率化Webアプリケーション',
         description: '予約管理、売上分析、スタッフのシフト管理などを一元的に行えるWebアプリケーション。React (Next.js) とNode.js (NestJS) で構築し、リアルタイム更新機能などを実装しました。',
         techStackString: 'React, Next.js, TypeScript, NestJS (Node.js), PostgreSQL, Docker, AWS', // 仮スタック
-        imageUrl: 'project3.jpg', // 要画像パス設定
+        imageUrl: '/img/project3.jpg', // 要画像パス設定
         icon: BsBuilding // プロジェクト内容を表すアイコン例
       },
       {
@@ -152,7 +155,7 @@ export const siteContent = {
         title: '自律型AIエージェントによるマルチエージェント会議システム',
         description: '複数の大規模言語モデル(LLM)エージェントが、自律的に対話・協調しながら特定タスク（市場調査、アイデア生成等）を実行するコンセプト検証システムを構築しました。',
         techStackString: 'React, Flask (Python), LangChain, Google Cloud Platform (GCP)',
-        imageUrl: 'project4.jpg', // 要画像パス設定
+        imageUrl: '/img/project4.jpg', // 要画像パス設定
         icon: GiConversation // プロジェクト内容を表すアイコン例
       },
       {
@@ -160,7 +163,7 @@ export const siteContent = {
         title: 'AIによる全自動動画生成パイプライン',
         description: 'テーマに基づき、AIが企画構成、台本生成、音声合成、関連素材収集・編集、字幕付与までを行い、動画コンテンツを自動生成するシステムを開発しました。',
         techStackString: 'Vue.js, Python (各種AI/MLライブラリ), FFmpeg, Google Cloud Platform (GCP)',
-        imageUrl: 'project5.jpg', // 要画像パス設定
+        imageUrl: '/img/project5.jpg', // 要画像パス設定
         icon: AiOutlineVideoCameraAdd // プロジェクト内容を表すアイコン例
       },
       {
@@ -168,7 +171,7 @@ export const siteContent = {
         title: '生成AIを活用した多機能Discord Bot',
         description: '自然言語での応答、情報検索、画像生成（Stable Diffusion等）、簡易タスク自動化など、様々な機能を持つDiscord Bot。Azure Cognitive Servicesなどを利用しました。',
         techStackString: 'Python, Discord.py, Azure (Cognitive Services, OpenAI Service)',
-        imageUrl: 'project6.jpg', // 要画像パス設定
+        imageUrl: '/img/project6.jpg', // 要画像パス設定
         icon: GiArtificialIntelligence // プロジェクト内容を表すアイコン例
       },
       {
@@ -176,7 +179,7 @@ export const siteContent = {
         title: '業務用iOSネイティブアプリケーション開発',
         description: '特定の業務フローに最適化されたiOSアプリ。SwiftUIを採用し、モダンで直感的なUI/UXとオフライン機能、外部デバイス連携などを実装しました。',
         techStackString: 'Swift, SwiftUI (iOS)',
-        imageUrl: 'project7.jpg', // 要画像パス設定
+        imageUrl: '/img/project7.jpg', // 要画像パス設定
         icon: BsPhone // プロジェクト内容を表すアイコン例
       }
     ]

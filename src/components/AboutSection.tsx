@@ -49,7 +49,7 @@ const AboutSection = () => {
           <img
             src={imagePlaceholder.modern}
             alt="About Me Illustration"
-            className="w-64 h-64 md:w-80 md:h-80 object-contain" // サイズ調整、object-contain を追加
+            className="w-80 h-80 md:w-96 md:h-96 object-cover rounded-full" // サイズを大きく変更
           />
         </motion.div>
 

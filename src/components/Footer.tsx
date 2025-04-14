@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { usePathname } from 'next/navigation'; // usePathname をインポート
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import { siteContent } from '@/data/content';
 
 const Footer = () => {
@@ -32,18 +31,8 @@ const Footer = () => {
           &copy; {currentYear} {siteContent.name}. All rights reserved.
         </p>
 
-        {/* SNSリンク */}
-        <div className="flex space-x-4">
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className={`${linkClasses} transition-colors`}>
-            <FaGithub size={20} />
-          </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={`${linkClasses} transition-colors`}>
-            <FaLinkedin size={20} />
-          </a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className={`${linkClasses} transition-colors`}>
-            <FaTwitter size={20} />
-          </a>
-        </div>
+        {/* SNSリンクは削除 */}
+        {/* <div className="flex space-x-4"> ... </div> */}
       </div>
     </footer>
   );

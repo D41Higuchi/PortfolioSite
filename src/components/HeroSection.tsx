@@ -38,6 +38,41 @@ ForwardedAnchor.displayName = 'ForwardedAnchor';
 // motion でラップ
 const MotionAnchor = motion(ForwardedAnchor);
 
+// アニメーションする円の定義 (HeroSectionの外に移動)
+const AnimatedCircle = ({ size, color, initialX, initialY, delay }: { size: number, color: string, initialX: string, initialY: string, delay: number }) => {
+  const variants = {
+    animate: {
+      // 初期位置からの相対的な移動ではなく、絶対位置を基準に動かすように調整
+      x: [`${initialX}`, `calc(${initialX} + ${Math.random() * 40 - 20}px)`],
+      y: [`${initialY}`, `calc(${initialY} + ${Math.random() * 40 - 20}px)`],
+      scale: [1, 1.05, 1], // 少し拡大縮小
+      transition: {
+        duration: Math.random() * 10 + 10, // 10-20秒のランダムな時間
+        repeat: Infinity,
+        repeatType: "mirror" as const,
+        ease: "easeInOut",
+        delay: delay,
+      },
+    },
+  };
+
+  return (
+    <motion.div
+      className={`absolute rounded-full filter blur-2xl opacity-40`}
+      style={{
+        width: `${size}px`,
+        height: `${size}px`,
+        backgroundColor: color,
+        // styleに直接初期位置を設定
+        top: initialY,
+        left: initialX,
+      }}
+      variants={variants}
+      animate="animate"
+    />
+  );
+};
+
 
 const HeroSection = () => {
   const targetRef = useRef<HTMLDivElement>(null);
@@ -53,22 +88,22 @@ const HeroSection = () => {
   const name = siteContent.name;
   const jobTitle = siteContent.jobTitle;
 
+  // 円の定義
+  const circles = [
+    { size: 200, color: 'rgba(236, 72, 153, 0.6)', initialX: '10%', initialY: '20%', delay: 0 }, // Pinkish
+    { size: 300, color: 'rgba(167, 139, 250, 0.6)', initialX: '70%', initialY: '15%', delay: 2 }, // Purplish
+    { size: 150, color: 'rgba(99, 102, 241, 0.6)', initialX: '30%', initialY: '60%', delay: 4 },  // Indigoish
+    { size: 250, color: 'rgba(219, 39, 119, 0.5)', initialX: '80%', initialY: '70%', delay: 1 }, // Deeper Pink
+    { size: 180, color: 'rgba(129, 140, 248, 0.5)', initialX: '5%', initialY: '80%', delay: 3 },  // Lighter Indigo
+  ];
+
   return (
     <section ref={targetRef} id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 text-white relative overflow-hidden">
-      {/* 背景要素 */}
-      <motion.div className="absolute inset-0 z-0" style={{ y: backgroundY }}>
-        <motion.div
-          className="absolute top-[-50px] left-[-50px] w-72 h-72 bg-pink-400 rounded-full filter blur-3xl opacity-50 animate-blob"
-          style={{ animationDelay: '0s' }}
-        ></motion.div>
-        <motion.div
-          className="absolute bottom-[-50px] right-[-50px] w-72 h-72 bg-purple-400 rounded-full filter blur-3xl opacity-50 animate-blob"
-          style={{ animationDelay: '2s' }}
-        ></motion.div>
-         <motion.div
-          className="absolute bottom-[100px] left-[100px] w-48 h-48 bg-indigo-400 rounded-full filter blur-3xl opacity-50 animate-blob"
-          style={{ animationDelay: '4s' }}
-        ></motion.div>
+      {/* 背景アニメーション要素 */}
+      <motion.div className="absolute inset-0 z-0 overflow-hidden" style={{ y: backgroundY }}>
+        {circles.map((circle, index) => (
+          <AnimatedCircle key={index} {...circle} />
+        ))}
       </motion.div>
 
       {/* テキストとボタン要素 */}
