@@ -4,6 +4,13 @@ import Modal from '@/components/ui/Modal';
 import { siteContent } from '@/data/content';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useMemo, useRef, useState } from 'react'; // useMemo をインポート
+// Remove dynamic import
+// import dynamic from 'next/dynamic';
+
+// Remove dynamic component definitions
+// const MotionDiv = dynamic(() => import('framer-motion').then(mod => mod.motion.div));
+// const MotionH2 = dynamic(() => import('framer-motion').then(mod => mod.motion.h2));
+
 
 // プロジェクトデータの型を定義 (content.ts から推論されるが、明示的に定義も可)
 type Project = typeof siteContent.projects.projectList[0];
@@ -26,8 +33,7 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
   };
 
   return (
-    // div を motion.div に戻し、variants を再適用
-    <motion.div
+    <motion.div // div を motion.div に変更
       ref={cardRef}
       // style={{ y }} // stagger で制御するため削除
       variants={cardItemVariants} // variants を適用
@@ -49,7 +55,7 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
         <h3 className="text-xl font-semibold mb-2 text-gray-900">{project.title}</h3>
         <p className="text-gray-600 text-sm leading-relaxed">{project.description}</p>
       </div>
-    </motion.div> // div を motion.div に戻す
+    </motion.div> // 閉じタグを </motion.div> に修正
   );
 };
 

@@ -8,10 +8,11 @@ import WaveDivider from '@/components/ui/WaveDivider'; // WaveDivider をイン�
 
 export default function FactoryPage() {
   return (
-    // 基本背景を factory-secondary に設定
-    <div className="bg-factory-secondary">
-      {/* FactoryHeroSection は独自背景を持つことが多いので primary -> primary と仮定 */}
+    // Remove theme-specific classes (font-serif, bg-factory-secondary, text-factory-text)
+    // These are now applied via body class in layout.tsx and globals.css
+    <div className="flex-grow">
       <FactoryHeroSection />
+      {/* Factory theme might use different dividers or none */}
       <WaveDivider color="fill-factory-primary" direction="down" />
       <FactoryAboutSection />
       {/* About (primary) -> Skills (secondary) */}

@@ -52,7 +52,7 @@ const GlassProjectsSection = () => {
   return (
     <> {/* フラグメントで囲む */}
       {/* 背景色を bg-glass-primary に変更、テキスト色を text-gray-200 に変更 (コントラスト改善) */}
-      <section id="projects" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-glass-primary py-20 md:py-32 px-4 text-gray-200">
+      <section id="projects" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-glass-primary py-20 md:py-32 px-4 text-white">
         <div className="max-w-6xl mx-auto w-full">
           <motion.h2
             initial={{ opacity: 0, y: -20 }}
@@ -60,7 +60,7 @@ const GlassProjectsSection = () => {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.6 }}
             // text-white を text-glass-panel に変更
-            className="text-4xl md:text-5xl font-bold mb-16 text-center text-glass-panel flex items-center justify-center gap-3"
+            className="text-4xl md:text-5xl font-bold mb-16 text-center text-white flex items-center justify-center gap-3"
           >
             <GlassIcon className="text-purple-400" /> {/* アイコン色はアクセントのまま */}
             {title}
@@ -89,9 +89,9 @@ const GlassProjectsSection = () => {
                 </div>
                 <div className="p-6 flex-grow">
                   {/* h3 のテキスト色を text-glass-panel に変更 */}
-                  <h3 className="text-xl font-semibold mb-2 text-glass-panel">{project.title}</h3>
+                  <h3 className="text-xl font-semibold mb-2 text-white">{project.title}</h3>
                   {/* p のテキスト色を text-glass-panel-muted に変更 */}
-                  <p className="text-glass-panel-muted text-sm leading-relaxed">{project.description}</p>
+                  <p className="text-white text-sm leading-relaxed">{project.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -108,7 +108,7 @@ const GlassProjectsSection = () => {
               <button
                 onClick={handleLoadMore}
                 // 背景の透明度を上げ、テキスト色を明確にする (例: text-gray-200)
-                className="px-8 py-3 bg-white/20 backdrop-blur-md border border-white/30 text-gray-200 rounded-lg font-semibold hover:bg-white/30 transition-colors duration-300 shadow-lg"
+                className="px-8 py-3 bg-white/20 backdrop-blur-md border border-white/30 text-white rounded-lg font-semibold hover:bg-white/30 transition-colors duration-300 shadow-lg"
               >
                 さらに表示
               </button>

@@ -8,7 +8,9 @@ import WaveDivider from '@/components/ui/WaveDivider'; // WaveDivider をイン�
 
 export default function Home() {
   return (
-    <div className="bg-default-secondary"> {/* 全体を囲むdivを追加し、基本背景色を設定 */}
+    // Remove theme-specific classes (font-sans, bg-default-secondary, text-default-text)
+    // These are now applied via body class in layout.tsx and globals.css
+    <div className="flex-grow">
       <HeroSection />
       {/* HeroSection (primary) -> AboutSection (primary) */}
       {/* Note: Heroは通常背景が異なることが多いので、一旦 primary -> primary とする */}

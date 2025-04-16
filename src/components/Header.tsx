@@ -107,9 +107,8 @@ const Header = () => {
           className="flex-shrink-0"
         >
           {/* ロゴの色をテーマに合わせる */}
-          {/* eslint-disable-next-line react/no-unescaped-entities */}
           <Link href={`${currentTheme.path}#home`} className={`text-2xl font-bold ${themeColors.logo}`}>
-            Sora's Portfolio {/* ヘッダータイトルを更新 */}
+            {"Sora's Portfolio"} {/* ヘッダータイトルを中括弧で囲む */}
           </Link>
         </motion.div>
 

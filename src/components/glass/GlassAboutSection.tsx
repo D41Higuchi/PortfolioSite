@@ -29,7 +29,7 @@ const GlassAboutSection = () => {
 
   return (
     // 元のレイアウトに戻す: flex items-center justify-center を追加
-    <section id="about" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-glass-primary py-20 md:py-32 px-4 text-gray-200">
+    <section id="about" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-glass-primary py-20 md:py-32 px-4 text-white">
       {/* 3D背景の div を削除 */}
 
       {/* 元の2カラムグリッドレイアウトに戻す */}
@@ -43,12 +43,12 @@ const GlassAboutSection = () => {
           className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 shadow-lg"
         >
           {/* h2 のテキスト色を text-glass-panel に変更 */}
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-glass-panel flex items-center gap-3">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white flex items-center gap-3">
             <GlassIcon className="text-purple-400" /> {/* アイコン色はアクセントのまま */}
             {title}
           </h2>
           {/* 本文のテキスト色を text-glass-panel-muted に変更 */}
-          <div className="space-y-4 text-lg text-glass-panel-muted leading-relaxed">
+          <div className="space-y-4 text-lg text-white leading-relaxed">
             {/* text1, text3, text4, text5 を表示 */}
             <p>{text1}</p>
             <p>{text3}</p>

@@ -8,12 +8,12 @@ import WaveDivider from '@/components/ui/WaveDivider'; // WaveDivider をイン�
 
 export default function GlassPage() {
   return (
-    // 基本背景を glass-secondary に設定
-    // Glassテーマは透明度が重要なので、背景画像などを layout.tsx で設定することを想定
-    <div className="bg-glass-secondary">
-      {/* GlassHeroSection は独自背景を持つことが多いので primary -> primary と仮定 */}
+    // Remove theme-specific classes (font-sans, text-glass-text, background)
+    // These are now applied via body class in layout.tsx and globals.css
+    // Specific background for Glass theme is applied here directly for now.
+    <div className="flex-grow bg-gradient-to-br from-gray-900 via-purple-900 to-indigo-900">
       <GlassHeroSection />
-      <WaveDivider color="fill-glass-primary" direction="down" />
+      {/* No WaveDividers for Glass theme, use subtle separators or spacing */}
       <GlassAboutSection />
       {/* About (primary) -> Skills (secondary) */}
       <WaveDivider color="fill-glass-primary" direction="up" />

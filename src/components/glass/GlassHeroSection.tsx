@@ -57,11 +57,11 @@ const GlassHeroSection = () => {
       >
         <h1 className="text-5xl md:text-6xl font-bold mb-4 tracking-tight">
           {name}
-        </h1>
-        {/* jobTitle を表示 */}
-        <p className="text-xl md:text-2xl text-gray-300 mb-8">
-          {jobTitle}
-        </p>
+         </h1>
+         {/* jobTitle を表示 */}
+         <p className="text-xl md:text-2xl text-white mb-8">
+           {jobTitle}
+         </p>
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}

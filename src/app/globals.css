@@ -2,24 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ここにカスタムグローバルスタイルを追加できます */
-body {
-  /* 例: スムーズスクロール */
-  scroll-behavior: smooth;
-  /* 基本的な背景色とテキスト色を設定 (デフォルトテーマ) */
-  @apply bg-default-secondary text-default-text;
-  /* 基本フォントを設定 (tailwind.config.ts の sans を参照) */
-  font-family: theme('fontFamily.sans');
+@layer base {
+  /* テーマごとの基本スタイル */
+  .theme-modern {
+    font-family: theme('fontFamily.sans');
+    background-color: theme('colors.default.secondary'); /* Light gray background */
+    color: theme('colors.default.text'); /* Dark gray text */
+  }
+  .theme-retro {
+    font-family: theme('fontFamily.pixel');
+    background-color: theme('colors.retro.primary'); /* Cream background */
+    color: theme('colors.retro.text'); /* Dark brown text */
+  }
+  .theme-glass {
+    /* Glass theme often has a gradient or image background set elsewhere,
+       so set a fallback and base text color */
+    font-family: theme('fontFamily.sans');
+    background-color: #0f172a; /* Dark blue fallback */
+    color: theme('colors.glass.text-muted'); /* Light gray text */
+    /* Add specific background in page/layout if needed */
+  }
+  .theme-factory {
+    font-family: theme('fontFamily.serif');
+    background-color: theme('colors.factory.primary'); /* Dark gray background */
+    color: theme('colors.factory.text'); /* Light gray text */
+  }
+
+  /* 共通の基本スタイル */
+  body {
+    scroll-behavior: smooth;
+  }
+
+  /* 基本的なリンクスタイル (テーマごとに上書き可能) */
+  a {
+    /* Use a sensible default or remove if handled by theme */
+    @apply text-blue-600 hover:text-blue-800 transition-colors duration-300;
+  }
 }
+
+/* ここにカスタムグローバルスタイルを追加できます */
+
 
 /* 基本的なリンクスタイル */
-a {
-  @apply text-default-accent transition-colors duration-300;
-}
+/* a {
+  @apply text-default-accent transition-colors duration-300; */
+/* } */
 
-a:hover {
-  @apply text-blue-700; /* ホバー時の色を少し濃くする例 */
-}
+/* a:hover { */
+  /* @apply text-blue-700; */ /* ホバー時の色を少し濃くする例 */
+/* } */
 
 
 @layer utilities {

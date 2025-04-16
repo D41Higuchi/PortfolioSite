@@ -22,7 +22,7 @@ const GlassSkillsSection = () => {
 
   return (
     // 背景色を bg-glass-secondary に変更、テキスト色を text-gray-200 に変更 (コントラスト改善)
-    <section id="skills" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-glass-secondary py-20 md:py-32 px-4 text-gray-200">
+    <section id="skills" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-glass-secondary py-20 md:py-32 px-4 text-white">
       <motion.div
         variants={sectionVariants}
         initial="hidden"
@@ -36,7 +36,7 @@ const GlassSkillsSection = () => {
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.6 }}
           // text-white を text-glass-panel に変更
-          className="text-4xl md:text-5xl font-bold mb-16 text-center text-glass-panel"
+          className="text-4xl md:text-5xl font-bold mb-16 text-center text-white"
         >
            {title}
         </motion.h2>
@@ -49,14 +49,14 @@ const GlassSkillsSection = () => {
               className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-6 shadow-lg transition-all duration-300 hover:bg-white/10 hover:shadow-xl"
             >
               {/* h3 のテキスト色を text-glass-panel に変更 */}
-              <h3 className="text-xl font-semibold mb-6 text-glass-panel flex items-center gap-2">
+              <h3 className="text-xl font-semibold mb-6 text-white flex items-center gap-2">
                 <category.icon className="text-purple-400" /> {/* アイコン色はアクセントのまま */}
                 {category.name}
               </h3>
               <div className="space-y-4">
                 {category.items.map((skill) => (
                   // ProgressBar のラベルとパーセンテージの色を text-glass-panel-muted に変更
-                  <div key={skill.name} className="[&>div>div>span]:text-glass-panel-muted [&>div>div>span+span]:text-glass-panel-muted">
+                  <div key={skill.name} className="[&>div>div>span]:text-white [&>div>div>span+span]:text-white">
                     <ProgressBar
                       label={skill.name}
                       level={skill.level}

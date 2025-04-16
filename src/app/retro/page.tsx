@@ -8,8 +8,9 @@ import WaveDivider from '@/components/ui/WaveDivider'; // WaveDivider をイン�
 
 export default function RetroPage() {
   return (
-    // font-pixel は layout.tsx で適用される可能性があるので一旦削除、基本背景を retro-secondary に
-    <div className="bg-retro-secondary">
+    // Remove theme-specific classes (font-pixel, bg-retro-primary, text-retro-text)
+    // These are now applied via body class in layout.tsx and globals.css
+    <div className="flex-grow">
       {/* RetroHeroSection は独自背景を持つことが多いので primary -> primary と仮定 */}
       <RetroHeroSection />
       <WaveDivider color="fill-retro-primary" direction="down" />

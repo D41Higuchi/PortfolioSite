@@ -4,7 +4,7 @@ import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CursorFollower from '@/components/ui/CursorFollower';
-import React from 'react';
+import React, { useEffect, useState } from 'react'; // useEffect, useState をインポート
 // DotGothic16 をインポート
 import { Inter, Press_Start_2P, Playfair_Display, DotGothic16 } from 'next/font/google';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
@@ -36,34 +36,47 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   useSmoothScroll();
-  const pathname = usePathname(); // パスを取得
-  const isRetro = pathname === '/retro'; // Retroテーマか判定
+  const pathname = usePathname();
 
-  // body のクラス名を決定するロジックを変数に切り出し
-  // body のクラス名を決定するロジックを変数に切り出し
-  const bodyClassName = `flex flex-col min-h-screen pt-16 leading-relaxed antialiased ${
-    isRetro
-      ? 'font-pixel bg-retro-primary text-retro-text' // Retroテーマのスタイル
-      : 'font-sans' // 通常のスタイル
-  }`;
-  // ESLintエラー回避のため、テンプレートリテラル内のシングルクォートを ' に置換する必要があるか確認しましたが、
-  // この変数はJSXに直接渡されるため、エスケープは不要なはずです。
-  // ESLintルールの誤検知の可能性があるため、再度 eslint-disable-next-line を試します。
+  // クライアントサイドでのみテーマクラスを適用
+  useEffect(() => {
+    let themeClass = 'theme-modern'; // デフォルト
+    if (pathname === '/retro') {
+      themeClass = 'theme-retro';
+    } else if (pathname === '/glass') {
+      themeClass = 'theme-glass';
+    } else if (pathname === '/factory') {
+      themeClass = 'theme-factory';
+    }
+
+    // 既存のテーマクラスを削除
+    document.body.classList.remove('theme-modern', 'theme-retro', 'theme-glass', 'theme-factory');
+    // 新しいテーマクラスを追加
+    document.body.classList.add(themeClass);
+
+    // クリーンアップ関数 (コンポーネントアンマウント時にクラスを削除する場合)
+    // return () => {
+    //   document.body.classList.remove(themeClass);
+    // };
+  }, [pathname]); // pathname が変更されたら実行
+
+  // 共通のレイアウトクラスのみを body に適用
+  const bodyClassName = `flex flex-col min-h-screen pt-16 leading-relaxed antialiased`;
+  // フォント変数は html タグに適用
+  const htmlClassName = `${inter.variable} ${pressStart2P.variable} ${playfairDisplay.variable} ${dotGothic16.variable}`;
 
   return (
-    // html タグに dotGothic16.variable を追加
-    <html lang="ja" className={`${inter.variable} ${pressStart2P.variable} ${playfairDisplay.variable} ${dotGothic16.variable}`}>
+    <html lang="ja" className={htmlClassName}>
       <head>
-         <title>Sora's Portfolio</title> {/* タイトルを更新 */}
-         <link rel="icon" href="/img/favicon.ico" /> {/* favicon のパスを修正 */}
+         <title>{"Sora's Portfolio"}</title>
+         <link rel="icon" href="/img/favicon.ico" />
          <meta name="description" content="A stunning portfolio site built with Next.js and Framer Motion" />
       </head>
-      {/* body タグで変数を使用 */}
-      {/* eslint-disable-next-line react/no-unescaped-entities */}
-      <body className={bodyClassName}>
+      <body className={bodyClassName}> {/* Apply common layout classes */}
         <CursorFollower />
         <Header />
-        <main className="flex-grow">{children}</main>
+        {/* flex-grow を main から削除し、ページコンポーネントのラッパーに移動させる */}
+        <main>{children}</main>
         <Footer />
       </body>
     </html>

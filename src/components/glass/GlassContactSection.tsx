@@ -19,7 +19,7 @@ const GlassContactSection = () => {
 
   return (
     // 背景色を bg-glass-secondary に変更、テキスト色を text-gray-200 に変更 (コントラスト改善)
-    <section id="contact" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-glass-secondary py-20 md:py-32 px-4 text-gray-200">
+    <section id="contact" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-glass-secondary py-20 md:py-32 px-4 text-white">
       <motion.div
         variants={sectionVariants}
         initial="hidden"
